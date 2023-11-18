@@ -1,1 +1,1 @@
-console.log("hello auctions");
+console.log('hello auctions');
