@@ -1,1 +1,34 @@
+@import 'variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.common-background {
+    background-color: #ffece5;
+}
+
+.relative-position {
+    position: relative;
+}
+
+.padding-right-45 {
+    padding-right: 45px;
+}
+
+.black-border {
+    border: 1px solid #000000 !important;
+}
+
+.background-common {
+    background-color: $common !important;
+}
+
+.search-icon-btn {
+    padding: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 40px;
+    background-color: transparent !important;
+    border: 0px;
+}
+
