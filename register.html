@@ -29,18 +29,18 @@
                 <div class="col-12">
                     <h1 class="text-center my-4">Register Here</h1>
                     <div id="sign-up-form-container">
-                        <form>
+                        <form id="registerForm">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="Name">
+                                <input type="text" class="form-control" required id="name" aria-describedby="Name">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="email">
+                                <input type="email" class="form-control" required id="email" aria-describedby="email">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" required id="password">
                             </div>
                             <div class="mb-3">
                                 <label for="avatar" class="form-label">Avatar url</label>
@@ -75,7 +75,6 @@
         </div>
     </footer>
 
-
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -84,12 +83,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p id="errorMessage">Sample Error Message</p>
+                    <p id="errorMessage">Internal Server Error</p>
                 </div>
-              
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Success</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage">Successful...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     
 </body>
 </html>

@@ -69,17 +69,29 @@ footer {
     }
 }
 
-
 /* below for error modal */
 #errorModal {
-
     .modal-content {
         background-color: #ffece5;
-
         #errorMessage {
             color: $red;
         }
     }
-  
+}
+
+/* below for success modal */
+#successModal {
+    .modal-content {
+        background-color: #ffece5;
+        #successMessage {
+            color: $green;
+            a {
+                color: #000000;
+                &:hover {
+                    color: #000000;
+                }
+            }
+        }
+    }
 }
 

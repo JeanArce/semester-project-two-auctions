@@ -29,3 +29,20 @@ export const getErrorMessage = (data) => {
 
   return finalCombinedString;
 }
+
+/**
+ * 
+ * @param {*} successMessage 
+ */
+export const showSuccess = (successMessage) => {
+  const successModal = new bootstrap.Modal(
+    document.getElementById('successModal'),
+    {
+      keyboard: false,
+      backdrop: 'static',
+    },
+  );
+  const successMessageEl = document.getElementById('successMessage');
+  successMessageEl.innerHTML = successMessage;
+  successModal.show();
+};
