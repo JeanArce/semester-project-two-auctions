@@ -32,3 +32,30 @@
     border: 0px;
 }
 
+
+main {
+    min-height: 200px;
+}
+
+footer {
+    background-color: #ffece5;
+}
+
+#footer-details {
+    @media (max-width: 767px) {
+        margin-bottom: 15px;
+    }
+}
+
+.social-icons {
+    img {
+        width: 30px; 
+        height: 30px;
+        margin: 10px;
+    }
+}
+
+
+
+
+
