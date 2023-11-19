@@ -1,6 +1,10 @@
 @import 'variables';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+h1 {
+    font-size: 28px;
+}
+
 .common-background {
     background-color: #ffece5;
 }
@@ -36,6 +40,16 @@
 main {
     min-height: 200px;
 }
+
+
+#sign-up-form-container {
+    max-width: 600px;
+    margin: 40px auto 40px auto;
+}
+
+
+
+// below is for footer
 
 footer {
     background-color: #ffece5;

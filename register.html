@@ -18,45 +18,41 @@
                 </a>
                 <div class="ms-auto d-flex align-items-center justify-content-center">
                     <a role="button" class="btn btn-primary me-2 black-border" href="login.html">Login</a>
-                    <a role="button" class="btn btn-primary black-border" href="register.html">Signup</a>
-                </div>
-
-            </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">                  
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Auction Listings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex relative-position">
-                        <input class="form-control black-border background-common padding-right-45" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success search-icon-btn d-flex align-items-center justify-content-center" type="submit">
-                            <img src="images/search.png" alt="Execute Search" width="25" height="25">
-                        </button>
-                    </form>
                 </div>
             </div>
         </nav>
-
-
-
-
     </header>
 
-    <main></main>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center my-4">Register Here</h1>
+                    <div id="sign-up-form-container">
+                        <form>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" aria-describedby="Username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="avatar" class="form-label">Avatar url</label>
+                                <input type="text" class="form-control" id="avatar">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <footer class="py-2">
         <div class="container">
@@ -78,7 +74,6 @@
             </div>
         </div>
     </footer>
-
     
 </body>
 </html>
