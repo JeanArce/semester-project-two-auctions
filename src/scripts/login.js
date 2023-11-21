@@ -1,5 +1,11 @@
 import { loginApi } from './apis.mjs';
-import { showError, getErrorMessage } from './helpers.mjs';
+import {
+  showError,
+  getErrorMessage,
+  redirectToProfileIfAuthenticated,
+} from './helpers.mjs';
+
+redirectToProfileIfAuthenticated();
 
 const loginForm = document.querySelector('.loginForm');
 const email = document.getElementById('email');

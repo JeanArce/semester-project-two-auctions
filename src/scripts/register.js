@@ -1,5 +1,12 @@
 import { registerApi } from './apis.mjs';
-import { getErrorMessage, showError, showSuccess } from './helpers.mjs';
+import {
+  getErrorMessage,
+  showError,
+  showSuccess,
+  redirectToProfileIfAuthenticated,
+} from './helpers.mjs';
+
+redirectToProfileIfAuthenticated();
 
 const registerForm = document.getElementById('registerForm');
 const nameValue = document.getElementById('name');
