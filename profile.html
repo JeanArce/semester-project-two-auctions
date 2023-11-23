@@ -52,11 +52,24 @@
 
 
 
-
     </header>
 
     <main>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="profileDetailsContainer d-flex align-items-center justify-content-center flex-column py-3">
+                        <img class="m-2" src="images/logo.png" alt="Sample Image">
+                        <h3 class="m-1 profile-value">Gabriel</h3>
+                        <p class="m-1"><strong>Email: </strong> <span class="email-value">Gabriel@noroff.no</span></p>
+                        <p class="m-0"><strong>Credits: </strong> <span class="credit-score">10000</span></p>
+                        <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#createListingModal">Create Listing</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     </main>
 
     <footer class="py-2">
@@ -80,6 +93,44 @@
         </div>
     </footer>
 
-    
+    <div class="modal fade" id="createListingModal" tabindex="-1" aria-labelledby="createListing" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="createListing">Create Listing</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createListingForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" required id="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="description" cols="5" rows="5"></textarea>
+                        </div>
+                        <div id="tagsContainer">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" name="tag" class="form-control mb-3">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addTagBtn">Add tag</button>
+                        <div class="mb-3" id="mediaContainer">
+                            <label for="media" class="form-label">Media</label>
+                            <input type="text" name="media" class="form-control mb-3">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addMediaBtn">Add media</button>
+                        <div class="mb-3">
+                            <label for="endsAt" class="form-label">Ends at</label>
+                            <input type="date" required name="endsAt" class="form-control" id="endsAt">
+                        </div>
+                      
+                        <button type="submit" class="btn btn-primary black-border d-block mx-auto">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
