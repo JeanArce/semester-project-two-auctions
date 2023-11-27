@@ -63,3 +63,26 @@ export const getProfileDetails = async (profileName) => {
   const profileData = await getProfileData.json();
   return profileData;
 };
+
+
+/**
+ * 
+ * @param {*} data 
+ * @returns 
+ */
+export const createEntry = async(data) => {
+  const createEntryEndpoint = baseUrl + `/auction/listings`;
+
+  const createEntry = await fetch(createEntryEndpoint, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json; charset=UTF-8',
+      'Authorization': `Bearer ${storedUser.accessToken}`
+    },
+  });
+
+  const createEntryData = await createEntry.json();
+  return createEntryData;
+
+};

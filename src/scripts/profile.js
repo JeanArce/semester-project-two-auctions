@@ -1,5 +1,12 @@
-import { getProfileDetails } from './apis.mjs';
-import { redirectToLoginIfNotAuthenticated } from './helpers.mjs';
+import { getProfileDetails, createEntry } from './apis.mjs';
+import {
+  redirectToLoginIfNotAuthenticated,
+  createInput,
+  showError,
+  showSuccess,
+  getErrorMessage,
+  generateModal,
+} from './helpers.mjs';
 
 redirectToLoginIfNotAuthenticated();
 
@@ -22,15 +29,21 @@ const getProfileData = async () => {
 
 getProfileData();
 
+let createListingModal;
+
+const createListingOpenBtn = document.getElementById('createListingOpenBtn');
+
+createListingOpenBtn.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  createListingModal = generateModal('createListingModal');
+  createListingModal.show();
+});
+
 const addTagBtn = document.getElementById('addTagBtn');
 addTagBtn.addEventListener('click', (evt) => {
   evt.preventDefault();
 
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.name = 'tag';
-  input.classList.add('form-control');
-  input.classList.add('mb-3');
+  const input = createInput('tag');
 
   const tagsContainer = document.getElementById('tagsContainer');
   tagsContainer.appendChild(input);
@@ -40,18 +53,14 @@ const addMediaBtn = document.getElementById('addMediaBtn');
 addMediaBtn.addEventListener('click', (evt) => {
   evt.preventDefault();
 
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.name = 'media';
-  input.classList.add('form-control');
-  input.classList.add('mb-3');
+  const input = createInput('media');
 
   const mediaContainer = document.getElementById('mediaContainer');
   mediaContainer.appendChild(input);
 });
 
 const createListingForm = document.getElementById('createListingForm');
-createListingForm.addEventListener('submit', (evt) => {
+createListingForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const formData = new FormData(evt.target);
 
@@ -69,5 +78,20 @@ createListingForm.addEventListener('submit', (evt) => {
     endsAt: new Date(endsAt),
   };
 
-  console.log(data);
+  //console.log(data);
+  try {
+    const createEntryExec = await createEntry(data);
+    //console.log(createEntryExec);
+    createListingModal.hide();
+
+    if (createEntryExec.errors) {
+      const errorMessage = getErrorMessage(createEntryExec);
+      showError(errorMessage);
+    } else {
+      createListingForm.reset();
+      showSuccess('Successfully created entry');
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });

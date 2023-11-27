@@ -122,10 +122,38 @@ export const createLoginSignup = () => {
 
     authActionsContainer.innerHTML = loginSignup;
   }
+};
 
 
-}
+/**
+ * 
+ * @param {*} name 
+ * @returns 
+ */
+export const createInput = (name) => {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = name;
+  input.classList.add('form-control');
+  input.classList.add('mb-3');
+
+  return input;
+};
 
 
-
+/**
+ * 
+ * @param {*} id 
+ * @returns 
+ */
+export const generateModal = (id) => {
+  const createModal = new bootstrap.Modal(
+    document.getElementById(id),
+    {
+      keyboard: false,
+      backdrop: 'static',
+    },
+  );
+  return createModal;
+};
 

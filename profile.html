@@ -64,7 +64,7 @@
                         <h3 class="m-1 profile-value">Gabriel</h3>
                         <p class="m-1"><strong>Email: </strong> <span class="email-value">Gabriel@noroff.no</span></p>
                         <p class="m-0"><strong>Credits: </strong> <span class="credit-score">10000</span></p>
-                        <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#createListingModal">Create Listing</button>
+                        <button type="button" class="btn btn-primary my-3" id="createListingOpenBtn">Create Listing</button>
                     </div>
                 </div>
             </div>
@@ -127,6 +127,34 @@
                       
                         <button type="submit" class="btn btn-primary black-border d-block mx-auto">Create</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Something went wrong...</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage">Internal Server Error</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Success</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage">Successful...</p>
                 </div>
             </div>
         </div>
