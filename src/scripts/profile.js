@@ -1,4 +1,4 @@
-import { getProfileDetails, createEntry } from './apis.mjs';
+import { getProfileDetails, createEntry, getProfileListings } from './apis.mjs';
 import {
   redirectToLoginIfNotAuthenticated,
   createInput,
@@ -16,8 +16,6 @@ const profileName = urlParams.get('profileName');
 
 const getProfileData = async () => {
   const profileData = await getProfileDetails(profileName);
-  //console.log(profileData);
-
   const profile = document.querySelector('.profile-value');
   const email = document.querySelector('.email-value');
   const credits = document.querySelector('.credit-score');
@@ -95,3 +93,11 @@ createListingForm.addEventListener('submit', async (evt) => {
     console.log(err);
   }
 });
+
+// get profile listings
+const doGetProfileListings = async () => {
+  const profileListings = await getProfileListings(profileName);
+  console.log(profileListings);
+};
+
+doGetProfileListings();
