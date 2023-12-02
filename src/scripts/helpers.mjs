@@ -157,3 +157,33 @@ export const generateModal = (id) => {
   return createModal;
 };
 
+/**
+ * 
+ * @param {*} dateString 
+ * @returns 
+ */
+export const formatDateToReadable = (dateString) => {
+  const readableDate = new Date(dateString);
+
+  const Months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const day = readableDate.getDate();
+  const month = Months[readableDate.getMonth()]; 
+  const year = readableDate.getFullYear()
+  const dateCombine = year + ' ' + month + ' ' + day;
+  return dateCombine;
+  
+};

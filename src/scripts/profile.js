@@ -6,7 +6,9 @@ import {
   showSuccess,
   getErrorMessage,
   generateModal,
+  formatDateToReadable,
 } from './helpers.mjs';
+import { carouselComponent, tagsComponent } from './components.mjs';
 
 redirectToLoginIfNotAuthenticated();
 
@@ -97,7 +99,57 @@ createListingForm.addEventListener('submit', async (evt) => {
 // get profile listings
 const doGetProfileListings = async () => {
   const profileListings = await getProfileListings(profileName);
-  console.log(profileListings);
+  const listing = profileListings.map((el) => {
+    el.created = formatDateToReadable(el.created);
+    el.updated = formatDateToReadable(el.updated);
+    el.endsAt = formatDateToReadable(el.endsAt);
+
+    return el;
+  });
+
+  console.log(listing);
+
+  const profileListingsContainer = document.getElementById('profileListings');
+  profileListingsContainer.innerHTML = '';
+
+  listing.map((el, index) => {
+    const {
+      created,
+      description,
+      endsAt,
+      media,
+      tags,
+      title,
+      updated,
+      _count,
+    } = el;
+
+    const profileItem = `
+      <div class="row rowListItemContainer mb-5">
+        ${carouselComponent(index, media)}
+        <div class="col-12 col-md-6 py-3 px-0 itemContentInCarouselWrapper">
+          <div class="itemContentInCarousel px-5">
+            <h3>${title}</h3>
+            <p>${description}</p>                                      
+            ${tagsComponent(tags)}
+            <div class="datesContainer">
+              <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
+              <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
+              <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+            </div>
+
+            <div class="btn-group mb-3" role="group" aria-label="Bids count group">
+              <button type="button" class="btn btn-warning">Bid's Count</button>
+              <button type="button" class="btn btn-info">${_count.bids}</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    `;
+
+    profileListingsContainer.innerHTML += profileItem;
+  }); // end map listings
 };
 
 doGetProfileListings();
