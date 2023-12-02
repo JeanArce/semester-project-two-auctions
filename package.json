@@ -8,11 +8,13 @@
     "watch": "sass --watch src/scss:dist/css & live-server",
     "prepare": "husky install"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.1"
+    "bootstrap": "^5.3.1",
+    "dompurify": "^3.0.6"
   },
   "devDependencies": {
     "eslint": "^8.54.0",
