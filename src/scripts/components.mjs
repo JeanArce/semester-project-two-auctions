@@ -61,7 +61,8 @@ export const tagsComponent = (tags) => {
         <div class="tagsListContainer mb-3">
     `;
     tags.map((el) => {
-        const tag = `<span class="badge rounded-pill text-bg-secondary">${el}</span>`;
+        const sanitized = DOMPurify.sanitize(el);
+        const tag = `<span class="badge rounded-pill text-bg-secondary">${sanitized}</span>`;
         dataHtml += tag;
     })
     dataHtml += `
@@ -87,7 +88,7 @@ export const listItemContentComponent = (itemObj, index) => {
             <div class="col-12 col-md-6 py-3 px-0 itemContentInCarouselWrapper">
             <div class="itemContentInCarousel px-5">
                 <h3>${DOMPurify.sanitize(title)}</h3>
-                <p>${description}</p>                                      
+                <p>${DOMPurify.sanitize(description)}</p>                                      
                 ${tagsComponent(tags)}
                 <div class="datesContainer">
                 <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
