@@ -107,6 +107,40 @@ footer {
 
 .rowListItemContainer {
     background-color: #e7e2e2;
+    position: relative;
+
+    .dropdown {
+        position: absolute;
+        width: auto;
+        top: 15px;
+        right: 0px;
+       
+        .dropdown-toggle {
+            background-color: transparent;
+            border: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span  {
+                display: block;
+                width: 6px;
+                height: 6px;
+                background-color: #534e4e;
+                border-radius: 50%;
+
+                margin-right: 5px;
+
+                &:last-child {
+                    margin-right: 0px;
+                }
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+    }
 }
 
 .carousel-item {

@@ -1,4 +1,9 @@
-import { getProfileDetails, createEntry, getProfileListings } from './apis.mjs';
+import {
+  getProfileDetails,
+  createEntry,
+  getProfileListings,
+  deleteListing,
+} from './apis.mjs';
 import {
   redirectToLoginIfNotAuthenticated,
   createInput,
@@ -59,6 +64,29 @@ addMediaBtn.addEventListener('click', (evt) => {
   mediaContainer.appendChild(input);
 });
 
+// get profile listings
+const doGetProfileListings = async () => {
+  const profileListings = await getProfileListings(profileName);
+  const listing = profileListings.map((el) => {
+    el.created = formatDateToReadable(el.created);
+    el.updated = formatDateToReadable(el.updated);
+    el.endsAt = formatDateToReadable(el.endsAt);
+
+    return el;
+  });
+
+  const profileListingsContainer = document.getElementById('profileListings');
+  profileListingsContainer.innerHTML = '';
+
+  listing.map((el, index) => {
+    const listItem = listItemContentComponent(el, index);
+    profileListingsContainer.innerHTML += listItem;
+  }); // end map listings
+};
+
+doGetProfileListings();
+
+// below for create listing form
 const createListingForm = document.getElementById('createListingForm');
 createListingForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -90,32 +118,32 @@ createListingForm.addEventListener('submit', async (evt) => {
     } else {
       createListingForm.reset();
       showSuccess('Successfully created entry');
+      doGetProfileListings();
     }
   } catch (err) {
     console.log(err);
   }
 });
 
-// get profile listings
-const doGetProfileListings = async () => {
-  const profileListings = await getProfileListings(profileName);
-  const listing = profileListings.map((el) => {
-    el.created = formatDateToReadable(el.created);
-    el.updated = formatDateToReadable(el.updated);
-    el.endsAt = formatDateToReadable(el.endsAt);
+// below for delete listing
+document.addEventListener('click', async (evt) => {
+  evt.preventDefault();
 
-    return el;
-  });
+  if (evt.target.classList.contains('deleteListing')) {
+    const id = evt.target.id;
 
-  console.log(listing);
-
-  const profileListingsContainer = document.getElementById('profileListings');
-  profileListingsContainer.innerHTML = '';
-
-  listing.map((el, index) => {
-    const listItem = listItemContentComponent(el, index);
-    profileListingsContainer.innerHTML += listItem;
-  }); // end map listings
-};
-
-doGetProfileListings();
+    if (confirm('Are you sure you want to delete?') == true) {
+      try {
+        const deleteList = await deleteListing(id);
+        if (deleteList) {
+          doGetProfileListings();
+          showSuccess('Successfully deleted.');
+        } else {
+          showError('Something went wrong deleting the list item');
+        }
+      } catch (e) {
+        showError('Something went wrong deleting the list item');
+      }
+    }
+  }
+});

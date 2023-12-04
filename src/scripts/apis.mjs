@@ -103,3 +103,20 @@ export const getProfileListings = async(name) => {
   const getProfileListData = await getProfileList.json();
   return getProfileListData;
 };
+
+
+export const deleteListing = async(id) => {
+  const deleteListingEndpoint = baseUrl + `/auction/listings/${id}`;
+  const executeFetch = await fetch(deleteListingEndpoint, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${storedUser.accessToken}`
+    },
+  });
+ 
+  if(executeFetch.ok) {
+    return true;
+  } else {
+    return false;
+  }
+};

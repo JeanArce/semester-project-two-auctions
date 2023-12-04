@@ -80,31 +80,47 @@ export const tagsComponent = (tags) => {
  * @returns
  */
 export const listItemContentComponent = (itemObj, index) => {
-  const { created, description, endsAt, media, tags, title, updated, _count } = itemObj;
+  const { created, description, endsAt, media, tags, title, updated, _count, id } = itemObj;
 
   let dataHtml = `
         <div class="row rowListItemContainer mb-5">
             ${carouselComponent(index, media)}
             <div class="col-12 col-md-6 py-3 px-0 itemContentInCarouselWrapper">
-            <div class="itemContentInCarousel px-5">
-                <h3>${DOMPurify.sanitize(title)}</h3>
-                <p>${DOMPurify.sanitize(description)}</p>                                      
-                ${tagsComponent(tags)}
-                <div class="datesContainer">
-                <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
-                <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
-                <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                <div class="itemContentInCarousel px-5">
+                    <h3>${DOMPurify.sanitize(title)}</h3>
+                    <p>${DOMPurify.sanitize(
+                      description,
+                    )}</p>                                      
+                    ${tagsComponent(tags)}
+                    <div class="datesContainer">
+                    <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
+                    <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
+                    <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                    </div>
+
+                    <div class="btn-group mb-3" role="group" aria-label="Bids count group">
+                    <button type="button" class="btn btn-warning">Bid's Count</button>
+                    <button type="button" class="btn btn-info">${
+                      _count.bids
+                    }</button>
+                    </div>
                 </div>
 
-                <div class="btn-group mb-3" role="group" aria-label="Bids count group">
-                <button type="button" class="btn btn-warning">Bid's Count</button>
-                <button type="button" class="btn btn-info">${
-                  _count.bids
-                }</button>
-                </div>
             </div>
 
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                    <li><a class="dropdown-item deleteListing" id="${id}" href="#">Delete</a></li>
+                </ul>
             </div>
+
+
         </div>
     `;
 
