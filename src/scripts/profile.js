@@ -154,9 +154,8 @@ const updateListingForm = document.getElementById('updateListingForm');
 let updateListingModal = '';
 
 document.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-
   if (evt.target.classList.contains('editListing')) {
+    evt.preventDefault();
     const id = evt.target.id;
     const listDataById = await getListingById(id);
     console.log(listDataById);
