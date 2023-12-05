@@ -173,7 +173,7 @@
                 <div class="modal-body">
                     <form id="createListingForm">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Title</label>
+                            <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" name="title" required id="title">
                         </div>
                         <div class="mb-3">
@@ -182,12 +182,12 @@
                         </div>
                         <div id="tagsContainer">
                             <label for="tags" class="form-label">Tags</label>
-                            <input type="text" name="tag" class="form-control mb-3">
+                            <input type="text" name="tag" id="tags" class="form-control mb-3">
                         </div>
                         <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addTagBtn">Add tag</button>
                         <div class="mb-3" id="mediaContainer">
                             <label for="media" class="form-label">Media</label>
-                            <input type="text" name="media" class="form-control mb-3">
+                            <input type="text" name="media" id="media" class="form-control mb-3">
                         </div>
                         <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addMediaBtn">Add media</button>
                         <div class="mb-3">
@@ -216,15 +216,54 @@
         </div>
     </div>
 
-    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Success</h6>
+                    <h6 class="modal-title">Success</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p id="successMessage">Successful...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateListingModal" tabindex="-1" aria-labelledby="updateListing" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="updateListing">Update Listing</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateListingForm">
+                        <div class="mb-3">
+                            <label for="titleUpdate" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" required id="titleUpdate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descriptionUpdate" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="descriptionUpdate" cols="5" rows="5"></textarea>
+                        </div>
+                        <div id="tagsContainerUpdate">
+                            <label for="tagsUpdate" class="form-label">Tags</label>
+                            <input type="text" name="tag" id="tagsUpdate" class="form-control mb-3">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addTagBtnUpdate">Add tag</button>
+                        <div class="mb-3" id="mediaContainerUpdate">
+                            <label for="mediaUpdate" class="form-label">Media</label>
+                            <input type="text" name="media" id="mediaUpdate" class="form-control mb-3">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-4 ms-auto d-block" id="addMediaBtnUpdate">Add media</button>
+                        <div class="mb-3">
+                            <label for="endsAtUpdate" class="form-label">Ends at</label>
+                            <input type="date" required name="endsAt" class="form-control" id="endsAtUpdate">
+                        </div>
+                      
+                        <button type="submit" class="btn btn-primary black-border d-block mx-auto">Update</button>
+                    </form>
                 </div>
             </div>
         </div>

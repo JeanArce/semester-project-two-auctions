@@ -115,7 +115,7 @@ export const listItemContentComponent = (itemObj, index) => {
                     <span></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                    <li><a class="dropdown-item editListing" id="${id}" href="#">Edit</a></li>
                     <li><a class="dropdown-item deleteListing" id="${id}" href="#">Delete</a></li>
                 </ul>
             </div>

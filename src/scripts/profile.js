@@ -3,6 +3,7 @@ import {
   createEntry,
   getProfileListings,
   deleteListing,
+  getListingById,
 } from './apis.mjs';
 import {
   redirectToLoginIfNotAuthenticated,
@@ -12,6 +13,7 @@ import {
   getErrorMessage,
   generateModal,
   formatDateToReadable,
+  formatDateToYearMonthDay,
 } from './helpers.mjs';
 import { listItemContentComponent } from './components.mjs';
 
@@ -127,9 +129,8 @@ createListingForm.addEventListener('submit', async (evt) => {
 
 // below for delete listing
 document.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-
   if (evt.target.classList.contains('deleteListing')) {
+    evt.preventDefault();
     const id = evt.target.id;
 
     if (confirm('Are you sure you want to delete?') == true) {
@@ -147,3 +148,112 @@ document.addEventListener('click', async (evt) => {
     }
   }
 });
+
+// below for edit listing
+const updateListingForm = document.getElementById('updateListingForm');
+let updateListingModal = '';
+
+document.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+
+  if (evt.target.classList.contains('editListing')) {
+    const id = evt.target.id;
+    const listDataById = await getListingById(id);
+    console.log(listDataById);
+
+    updateListingModal = generateModal('updateListingModal');
+    updateListingModal.show();
+
+    const titleUpdate = document.getElementById('titleUpdate');
+    titleUpdate.value = listDataById.title;
+    const descriptionUpdate = document.getElementById('descriptionUpdate');
+    descriptionUpdate.value = listDataById.description;
+    const endsAtUpdate = document.getElementById('endsAtUpdate');
+    endsAtUpdate.value = formatDateToYearMonthDay(listDataById.endsAt);
+
+    // below for tags to edit
+    const tagsContainerUpdate = document.getElementById('tagsContainerUpdate');
+    listDataById.tags.map((val, index) => {
+      if (index > 0) {
+        const input = createInput('tag');
+
+        tagsContainerUpdate.appendChild(input);
+      }
+    });
+
+    const tagsChildElements = tagsContainerUpdate.children;
+    const tagsInputArray = Array.from(tagsChildElements);
+
+    listDataById.tags.map((val, index) => {
+      const elementIndex = index + 1;
+      tagsInputArray[elementIndex].value = val;
+    });
+
+    // below for media to edit
+
+    const mediaContainerUpdate = document.getElementById(
+      'mediaContainerUpdate',
+    );
+    listDataById.media.map((val, index) => {
+      if (index > 0) {
+        const input = createInput('media');
+
+        mediaContainerUpdate.appendChild(input);
+      }
+    });
+
+    const mediaChildElements = mediaContainerUpdate.children;
+    const mediaInputArray = Array.from(mediaChildElements);
+
+    listDataById.media.map((val, index) => {
+      const elementIndex = index + 1;
+      mediaInputArray[elementIndex].value = val;
+    });
+  }
+});
+
+const addTagBtnUpdate = document.getElementById('addTagBtnUpdate');
+addTagBtnUpdate.addEventListener('click', (evt) => {
+  evt.preventDefault();
+
+  const input = createInput('tag');
+
+  const tagsContainerUpdate = document.getElementById('tagsContainerUpdate');
+  tagsContainerUpdate.appendChild(input);
+});
+
+const addMediaBtnUpdate = document.getElementById('addMediaBtnUpdate');
+addMediaBtnUpdate.addEventListener('click', (evt) => {
+  evt.preventDefault();
+
+  const input = createInput('media');
+
+  const mediaContainerUpdate = document.getElementById('mediaContainerUpdate');
+  mediaContainerUpdate.appendChild(input);
+});
+
+document
+  .getElementById('updateListingModal')
+  .addEventListener('hidden.bs.modal', function () {
+    console.log('closed modal');
+
+    updateListingForm.reset();
+
+    const defaultTags = `
+    <label for="tagsUpdate" class="form-label">Tags</label>
+    <input type="text" name="tag" id="tagsUpdate" class="form-control mb-3">
+  `;
+
+    const tagsContainerUpdate = document.getElementById('tagsContainerUpdate');
+    tagsContainerUpdate.innerHTML = defaultTags;
+
+    const defaultMedia = `
+    <label for="mediaUpdate" class="form-label">Media</label>
+    <input type="text" name="media" id="mediaUpdate" class="form-control mb-3">
+  `;
+
+    const mediaContainerUpdate = document.getElementById(
+      'mediaContainerUpdate',
+    );
+    mediaContainerUpdate.innerHTML = defaultMedia;
+  });

@@ -120,3 +120,47 @@ export const deleteListing = async(id) => {
     return false;
   }
 };
+
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} id 
+ * @returns 
+ */
+export const updateListing = async(data, id) => {
+  const updateEntryEndpoint = baseUrl + `/auction/listings/${id}`;
+
+  const updateEntry = await fetch(updateEntryEndpoint, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json; charset=UTF-8',
+      Authorization: `Bearer ${storedUser.accessToken}`,
+    },
+  });
+
+  const updateEntryData = await updateEntry.json();
+  return updateEntryData;
+};
+
+
+/**
+ * 
+ * @param {*} id 
+ * @returns 
+ */
+export const getListingById = async(id) => {
+  const getListingIdByEndpoint = baseUrl + `/auction/listings/${id}`;
+
+  const getListing = await fetch(getListingIdByEndpoint, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json; charset=UTF-8'
+    },
+  });
+
+  const getListingData = await getListing.json();
+
+  return getListingData;
+};
