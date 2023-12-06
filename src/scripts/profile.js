@@ -4,6 +4,7 @@ import {
   getProfileListings,
   deleteListing,
   getListingById,
+  updateListing,
 } from './apis.mjs';
 import {
   redirectToLoginIfNotAuthenticated,
@@ -100,11 +101,23 @@ createListingForm.addEventListener('submit', async (evt) => {
   const media = formData.getAll('media');
   const endsAt = formData.get('endsAt');
 
+  const tagsNew = tag.filter((el) => {
+    if (el !== '') {
+      return el;
+    }
+  });
+
+  const newMedia = media.filter((el) => {
+    if (el !== '') {
+      return el;
+    }
+  });
+
   const data = {
     title: title,
     description: description,
-    tags: tag,
-    media: media,
+    tags: tagsNew,
+    media: newMedia,
     endsAt: new Date(endsAt),
   };
 
@@ -152,13 +165,14 @@ document.addEventListener('click', async (evt) => {
 // below for edit listing
 const updateListingForm = document.getElementById('updateListingForm');
 let updateListingModal = '';
+let idToEdit;
 
 document.addEventListener('click', async (evt) => {
   if (evt.target.classList.contains('editListing')) {
     evt.preventDefault();
+    idToEdit = evt.target.id;
     const id = evt.target.id;
     const listDataById = await getListingById(id);
-    console.log(listDataById);
 
     updateListingModal = generateModal('updateListingModal');
     updateListingModal.show();
@@ -234,8 +248,6 @@ addMediaBtnUpdate.addEventListener('click', (evt) => {
 document
   .getElementById('updateListingModal')
   .addEventListener('hidden.bs.modal', function () {
-    console.log('closed modal');
-
     updateListingForm.reset();
 
     const defaultTags = `
@@ -256,3 +268,51 @@ document
     );
     mediaContainerUpdate.innerHTML = defaultMedia;
   });
+
+updateListingForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+
+  const formData = new FormData(evt.target);
+
+  const title = formData.get('title');
+  const description = formData.get('description');
+  const tag = formData.getAll('tag');
+  const media = formData.getAll('media');
+  const endsAt = formData.get('endsAt');
+
+  const tagsNew = tag.filter((el) => {
+    if (el !== '') {
+      return el;
+    }
+  });
+
+  const newMedia = media.filter((el) => {
+    if (el !== '') {
+      return el;
+    }
+  });
+
+  const data = {
+    title: title,
+    description: description,
+    tags: tagsNew,
+    media: newMedia,
+    endsAt: new Date(endsAt),
+  };
+
+  try {
+    const updateEntry = await updateListing(data, idToEdit);
+
+    updateListingModal.hide();
+
+    if (updateEntry.errors) {
+      const errorMessage = getErrorMessage(updateEntry);
+      showError(errorMessage);
+    } else {
+      showSuccess('Successfully updated entry');
+      doGetProfileListings();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
