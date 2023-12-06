@@ -269,5 +269,26 @@
         </div>
     </div>
 
+    <div class="modal fade" id="createBidModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Create Bid for (<strong id="bidTitle">Sample Bid</strong>)</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createBiddingForm">
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount ($)</label>
+                            <input type="number" class="form-control" name="amount" required id="amount">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary black-border d-block mx-auto">Make a Bid</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

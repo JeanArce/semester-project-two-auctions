@@ -164,3 +164,28 @@ export const getListingById = async(id) => {
 
   return getListingData;
 };
+
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} id 
+ * @returns 
+ */
+export const doCreateBid = async(data, id) => {
+  const createBidEndpoint = baseUrl + `/auction/listings/${id}/bids`;
+
+  const createBidEntry = await fetch(createBidEndpoint, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json; charset=UTF-8',
+      Authorization: `Bearer ${storedUser.accessToken}`,
+    },
+  });
+
+  const createBidEntryData = await createBidEntry.json();
+  return createBidEntryData;
+
+
+}; 

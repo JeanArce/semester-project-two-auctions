@@ -62,7 +62,7 @@ export const tagsComponent = (tags) => {
     `;
     tags.map((el) => {
         const sanitized = DOMPurify.sanitize(el);
-        const tag = `<span class="badge rounded-pill text-bg-secondary">${sanitized}</span>`;
+        const tag = `<span class="badge tag-badge rounded-pill text-bg-secondary">${sanitized}</span>`;
         dataHtml += tag;
     })
     dataHtml += `
@@ -93,17 +93,24 @@ export const listItemContentComponent = (itemObj, index) => {
                     )}</p>                                      
                     ${tagsComponent(tags)}
                     <div class="datesContainer">
-                    <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
-                    <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
-                    <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                        <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
+                        <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
+                        <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
                     </div>
 
                     <div class="btn-group mb-3" role="group" aria-label="Bids count group">
-                    <button type="button" class="btn btn-warning">Bid's Count</button>
-                    <button type="button" class="btn btn-info">${
-                      _count.bids
-                    }</button>
+                        <button type="button" class="btn btn-warning">Bid's Count</button>
+                        <button type="button" class="btn btn-info">${
+                          _count.bids
+                        }</button>
                     </div>
+                
+                    <hr />
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary black-border bidListing" id="${id}">Create Bid</button>
+                    </div>
+
+
                 </div>
 
             </div>
