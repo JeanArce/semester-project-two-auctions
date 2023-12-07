@@ -25,7 +25,7 @@ const getPublicListingsData = async () => {
   auctionListingsContainer.innerHTML = '';
 
   listing.map((el, index) => {
-    const listItem = listItemContentComponent(el, index, false);
+    const listItem = listItemContentComponent(el, index);
     auctionListingsContainer.innerHTML += listItem;
   }); // end map listings
 };

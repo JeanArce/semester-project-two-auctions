@@ -28,7 +28,6 @@ const profileName = urlParams.get('profileName');
 const getProfileData = async () => {
   const profileData = await getProfileDetails(profileName);
 
-  console.log(profileData);
   const profile = document.querySelector('.profile-value');
   const email = document.querySelector('.email-value');
   const credits = document.querySelector('.credit-score');
@@ -75,6 +74,8 @@ addMediaBtn.addEventListener('click', (evt) => {
 // get profile listings
 const doGetProfileListings = async () => {
   const profileListings = await getProfileListings(profileName);
+  console.log(profileListings);
+
   const listing = profileListings.map((el) => {
     el.created = formatDateToReadable(el.created);
     el.updated = formatDateToReadable(el.updated);

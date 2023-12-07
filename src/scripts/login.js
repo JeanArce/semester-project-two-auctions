@@ -31,7 +31,8 @@ loginForm.addEventListener('submit', async (evt) => {
       login.profileName = login.name;
       delete login.name;
       localStorage.setItem('user', JSON.stringify(login));
-      window.location.href = '/profile.html?profileName=' + login.profileName;
+      // window.location.href = '/profile.html?profileName=' + login.profileName;
+      window.location.href = '/auctions.html';
     }
   } catch (error) {
     console.log(error);

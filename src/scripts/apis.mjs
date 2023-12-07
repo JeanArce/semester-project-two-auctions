@@ -92,7 +92,8 @@ export const createEntry = async(data) => {
  * @param {*} name 
  */
 export const getProfileListings = async(name) => {
-  const getProfileEndpoint = baseUrl + `/auction/profiles/${name}/listings`;
+  const getProfileEndpoint =
+    baseUrl + `/auction/profiles/${name}/listings?_seller=true&_bids=true`;
   const getProfileList = await fetch(getProfileEndpoint, {
     method: 'GET',
     headers: {
@@ -194,7 +195,8 @@ export const doCreateBid = async(data, id) => {
  * @returns 
  */
 export const getPublicListings = async() => {
-  const publicListingsEndpoint = baseUrl + `/auction/listings`;
+  const publicListingsEndpoint =
+    baseUrl + `/auction/listings?_active=true&_seller=true&_bids=true`;
   const getListings = await fetch(publicListingsEndpoint);
   const listingsData = await getListings.json();
   return listingsData;
