@@ -27,13 +27,17 @@ const profileName = urlParams.get('profileName');
 
 const getProfileData = async () => {
   const profileData = await getProfileDetails(profileName);
+
+  console.log(profileData);
   const profile = document.querySelector('.profile-value');
   const email = document.querySelector('.email-value');
   const credits = document.querySelector('.credit-score');
+  const bidsWon = document.querySelector('.bids-won');
 
   profile.innerHTML = profileData.name;
   email.innerHTML = profileData.email;
   credits.innerHTML = profileData.credits;
+  bidsWon.innerHTML = profileData.wins.length;
 };
 
 getProfileData();

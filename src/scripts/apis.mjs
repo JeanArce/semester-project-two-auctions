@@ -186,6 +186,16 @@ export const doCreateBid = async(data, id) => {
 
   const createBidEntryData = await createBidEntry.json();
   return createBidEntryData;
-
-
 }; 
+
+
+/**
+ * 
+ * @returns 
+ */
+export const getPublicListings = async() => {
+  const publicListingsEndpoint = baseUrl + `/auction/listings`;
+  const getListings = await fetch(publicListingsEndpoint);
+  const listingsData = await getListings.json();
+  return listingsData;
+}
