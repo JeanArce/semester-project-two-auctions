@@ -199,5 +199,28 @@ export const formatDateToYearMonthDay = (dateString) => {
   const day = String(date.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
-}
+};
+
+
+/**
+ * 
+ * @param {*} arr 
+ * @returns 
+ */
+export const highestBidAmount = (arr) => {
+  if (arr.length === 0) {
+    return 0; 
+  }
+
+  let maxAmount = arr[0].amount;
+
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].amount > maxAmount) {
+      maxAmount = arr[i].amount;
+    }
+  }
+
+  return maxAmount;
+};
 

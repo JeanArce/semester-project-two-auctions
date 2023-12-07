@@ -4,6 +4,7 @@
 //email - string
 //profileName - string
 const storedUser = JSON.parse(localStorage.getItem('user'));
+import { highestBidAmount } from "./helpers.mjs";
 
 /**
  *
@@ -111,7 +112,8 @@ export const listItemContentComponent = (
     updated,
     _count,
     id,
-    seller
+    seller,
+    bids
   } = itemObj;
 
   let dataHtml;
@@ -135,7 +137,11 @@ export const listItemContentComponent = (
                             <div class="datesContainer">
                                 <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
                                 <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
-                                <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                                <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                                <p><strong>Highest bid:</strong> <span>${highestBidAmount(
+                                  bids
+                                )}</span></p>
+
                             </div>
 
                             <div class="btn-group mb-3" role="group" aria-label="Bids count group">
@@ -190,7 +196,10 @@ export const listItemContentComponent = (
                             <div class="datesContainer">
                                 <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
                                 <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
-                                <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                                <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                                <p><strong>Highest bid:</strong> <span>${highestBidAmount(
+                                  bids
+                                )}</span></p>
                             </div>
 
                             <div class="btn-group mb-3" role="group" aria-label="Bids count group">
@@ -220,19 +229,22 @@ export const listItemContentComponent = (
                 <div class="itemContentInCarousel px-5">
                     <h3>${DOMPurify.sanitize(title)}</h3>
                     <p>${DOMPurify.sanitize(
-                        description,
+                      description,
                     )}</p>                                      
                     ${tagsComponent(tags)}
                     <div class="datesContainer">
                         <p class="mb-1"><strong>Created:</strong> <span>${created}</span></p>
                         <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
-                        <p><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                        <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
+                        <p><strong>Highest bid:</strong> <span>${highestBidAmount(
+                          bids
+                        )}</span></p>
                     </div>
 
                     <div class="btn-group mb-3" role="group" aria-label="Bids count group">
                         <button type="button" class="btn btn-warning">Bid's Count</button>
                         <button type="button" class="btn btn-info">${
-                            _count.bids
+                          _count.bids
                         }</button>
                     </div>
                 
