@@ -9,9 +9,13 @@ import {
 import { generateModal } from './helpers.mjs';
 doCreateBid;
 
-const getPublicListingsData = async () => {
-  const listingData = await getPublicListings();
-  console.log(listingData);
+const getPublicListingsData = async (tag = null) => {
+  let listingData;
+  if (tag) {
+    listingData = await getPublicListings(tag);
+  } else {
+    listingData = await getPublicListings();
+  }
 
   const listing = listingData.map((el) => {
     el.created = formatDateToReadable(el.created);
@@ -76,4 +80,24 @@ createBiddingForm.addEventListener('submit', async (evt) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+// below for search
+const searchInput = document.getElementById('searchInput');
+
+const typingDelay = 500;
+let typingTimer;
+
+const onTypingFinished = () => {
+  const searchValue = searchInput.value.trim();
+  if (searchValue == '') {
+    getPublicListingsData();
+  } else {
+    getPublicListingsData(searchValue);
+  }
+};
+
+searchInput.addEventListener('input', () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(onTypingFinished, typingDelay);
 });

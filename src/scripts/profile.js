@@ -72,9 +72,13 @@ addMediaBtn.addEventListener('click', (evt) => {
 });
 
 // get profile listings
-const doGetProfileListings = async () => {
-  const profileListings = await getProfileListings(profileName);
-  console.log(profileListings);
+const doGetProfileListings = async (tag = null) => {
+  let profileListings;
+  if (tag) {
+    profileListings = await getProfileListings(profileName, tag);
+  } else {
+    profileListings = await getProfileListings(profileName);
+  }
 
   const listing = profileListings.map((el) => {
     el.created = formatDateToReadable(el.created);
@@ -367,4 +371,25 @@ createBiddingForm.addEventListener('submit', async (evt) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+// below for search
+const searchInput = document.getElementById('searchInput');
+
+const typingDelay = 500;
+let typingTimer;
+
+const onTypingFinished = () => {
+  const searchValue = searchInput.value.trim();
+
+  if (searchValue == '') {
+    doGetProfileListings();
+  } else {
+    doGetProfileListings(searchValue);
+  }
+};
+
+searchInput.addEventListener('input', () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(onTypingFinished, typingDelay);
 });
