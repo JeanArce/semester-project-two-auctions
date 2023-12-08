@@ -321,6 +321,8 @@ updateListingForm.addEventListener('submit', async (evt) => {
     } else {
       showSuccess('Successfully updated entry');
       doGetProfileListings();
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = '';
     }
   } catch (err) {
     console.log(err);
