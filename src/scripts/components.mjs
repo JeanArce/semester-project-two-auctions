@@ -250,7 +250,7 @@ export const listItemContentComponent = (
                 
                     <hr />
                     <div class="text-center">
-                        <a type="button" class="btn btn-primary black-border" href="/login.html">Login to bid</a>
+                        <a type="button" class="btn btn-primary black-border" href="login.html">Login to bid</a>
                       
                     </div>
 
