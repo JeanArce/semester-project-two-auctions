@@ -78,7 +78,7 @@ export const createProfileLink = () => {
  */
 export const redirectToLoginIfNotAuthenticated = () => {
   if (!storedUser) {
-    window.location.href = '/login.html';
+    window.location.href = 'login.html';
   }
 }
 
@@ -87,7 +87,7 @@ export const redirectToLoginIfNotAuthenticated = () => {
  */
 export const redirectToProfileIfAuthenticated = () => {
   if (storedUser) {
-    window.location.href = `/profile.html?profileName=${storedUser.profileName}`;
+    window.location.href = `profile.html?profileName=${storedUser.profileName}`;
   }
 };
 

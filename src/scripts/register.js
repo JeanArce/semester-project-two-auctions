@@ -33,7 +33,7 @@ registerForm.addEventListener('submit', async (e) => {
     } else {
       registerForm.reset();
       showSuccess(
-        'You are successfully registered. <a href="/login.html">Click here to login.</a>',
+        'You are successfully registered. <a href="login.html">Click here to login.</a>',
       );
     }
   } catch (error) {
