@@ -95,10 +95,14 @@ const doGetProfileListings = async (tag = null) => {
   const profileListingsContainer = document.getElementById('profileListings');
   profileListingsContainer.innerHTML = '';
 
-  listing.map((el, index) => {
-    const listItem = listItemContentComponent(el, index);
-    profileListingsContainer.innerHTML += listItem;
-  }); // end map listings
+  if (listing.length > 0) {
+    listing.map((el, index) => {
+      const listItem = listItemContentComponent(el, index);
+      profileListingsContainer.innerHTML += listItem;
+    }); // end map listings
+  } else {
+    profileListingsContainer.innerHTML = `<p class="text-center">No listing found.</p>`;
+  }
 };
 
 doGetProfileListings();
