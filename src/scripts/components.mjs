@@ -124,7 +124,7 @@ export const listItemContentComponent = (
                     ${carouselComponent(index, media)}
                     <div class="col-12 col-md-6 py-3 px-0 itemContentInCarouselWrapper">
                         <div class="itemContentInCarousel px-5">
-                            <a class="profileNameLink mb-3 d-block" href="/profile.html?profileName=${
+                            <a class="profileNameLink mb-3 d-block" href="profile.html?profileName=${
                               seller.name
                             }">${seller.name}</a>
                             <h3>
@@ -182,7 +182,7 @@ export const listItemContentComponent = (
                     ${carouselComponent(index, media)}
                     <div class="col-12 col-md-6 py-3 px-0 itemContentInCarouselWrapper">
                         <div class="itemContentInCarousel px-5">
-                            <a class="profileNameLink mb-3 d-block" href="/profile.html?profileName=${
+                            <a class="profileNameLink mb-3 d-block" href="profile.html?profileName=${
                               seller.name
                             }">${seller.name}</a>
                             <h3>
