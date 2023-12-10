@@ -28,6 +28,9 @@ const profileName = urlParams.get('profileName');
 const getProfileData = async () => {
   const profileData = await getProfileDetails(profileName);
 
+  console.log(profileData);
+
+  const profileImage = document.getElementById('profileImage');
   const profile = document.querySelector('.profile-value');
   const email = document.querySelector('.email-value');
   const credits = document.querySelector('.credit-score');
@@ -37,6 +40,7 @@ const getProfileData = async () => {
   email.innerHTML = profileData.email;
   credits.innerHTML = profileData.credits;
   bidsWon.innerHTML = profileData.wins.length;
+  profileImage.src = profileData.avatar;
 };
 
 getProfileData();

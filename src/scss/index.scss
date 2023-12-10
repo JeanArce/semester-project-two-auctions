@@ -184,3 +184,14 @@ footer {
     }
 
 }
+
+/* below for profile image */
+
+#profileImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
