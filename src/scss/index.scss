@@ -170,3 +170,17 @@ footer {
 .profileNameLink {
     color: #000000;
 }
+
+/* below for group input */
+
+.groupInput {
+    position: relative;
+
+    img {
+        position: absolute;
+        bottom: 12px;
+        right: 8px;
+        cursor: pointer;
+    }
+
+}

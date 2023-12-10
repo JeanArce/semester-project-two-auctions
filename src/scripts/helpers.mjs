@@ -224,3 +224,26 @@ export const highestBidAmount = (arr) => {
   return maxAmount;
 };
 
+
+/**
+ * 
+ */
+export const togglePassword = () => {
+  // below for toggle password input
+  const passwordInput = document.getElementById('password');
+  const togglePassword = document.getElementById('togglePassword');
+
+  togglePassword.addEventListener('click', (evt) => {
+    const baseURL = window.location.origin;
+    const currentImage = evt.target.src;
+
+    if (currentImage == baseURL + '/images/close-eyes.svg') {
+      evt.target.src = 'images/open-eyes.svg';
+      passwordInput.type = 'text';
+    } else {
+      evt.target.src = 'images/close-eyes.svg';
+      passwordInput.type = 'password';
+    }
+  });
+
+};

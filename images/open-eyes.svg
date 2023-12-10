@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icn-password shown</title>
+    <g id="Email-Reset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Copy-2" transform="translate(-315.000000, -465.000000)" fill="#004994" fill-rule="nonzero">
+            <g id="Group-7" transform="translate(30.000000, 387.000000)">
+                <g id="icn-password-shown" transform="translate(285.000000, 78.000000)">
+                    <path d="M2,10 C2,5.5817 5.58172,2 10,2 C14.4183,2 18,5.5817 18,10 C18,10.5523 18.4477,11 19,11 C19.5523,11 20,10.5523 20,10 C20,4.47715 15.5228,0 10,0 C4.47715,0 0,4.47715 0,10 C0,10.5523 0.44772,11 1,11 C1.55228,11 2,10.5523 2,10 Z" id="Path"></path>
+                    <path d="M10,6 C7.79086,6 6,7.7909 6,10 C6,12.2091 7.79086,14 10,14 C12.2091,14 14,12.2091 14,10 C14,7.7909 12.2091,6 10,6 Z M8,10 C8,8.8954 8.8954,8 10,8 C11.1046,8 12,8.8954 12,10 C12,11.1046 11.1046,12 10,12 C8.8954,12 8,11.1046 8,10 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,6 +4,7 @@ import {
   showError,
   showSuccess,
   redirectToProfileIfAuthenticated,
+  togglePassword,
 } from './helpers.mjs';
 
 redirectToProfileIfAuthenticated();
@@ -40,3 +41,6 @@ registerForm.addEventListener('submit', async (e) => {
     console.log(error);
   }
 });
+
+// below for toggle password
+togglePassword();

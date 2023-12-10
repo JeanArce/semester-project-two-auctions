@@ -3,6 +3,7 @@ import {
   showError,
   getErrorMessage,
   redirectToProfileIfAuthenticated,
+  togglePassword,
 } from './helpers.mjs';
 
 redirectToProfileIfAuthenticated();
@@ -38,3 +39,6 @@ loginForm.addEventListener('submit', async (evt) => {
     console.log(error);
   }
 });
+
+// toggle password
+togglePassword();
