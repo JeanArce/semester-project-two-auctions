@@ -237,7 +237,7 @@ export const togglePassword = () => {
     const baseURL = window.location.origin;
     const currentImage = evt.target.src;
 
-    if (currentImage == baseURL + '/images/close-eyes.svg') {
+    if (currentImage.includes('close-eyes')) {
       evt.target.src = 'images/open-eyes.svg';
       passwordInput.type = 'text';
     } else {
