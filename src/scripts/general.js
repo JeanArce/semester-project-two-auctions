@@ -8,8 +8,10 @@ createLogout();
 createLoginSignup();
 
 const logoutBtn = document.getElementById('logoutButton');
-logoutBtn.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  localStorage.clear();
-  window.location.href = 'login.html';
-});
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    localStorage.clear();
+    window.location.href = 'login.html';
+  });
+}

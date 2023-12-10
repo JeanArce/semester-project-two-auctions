@@ -195,3 +195,14 @@ footer {
     border-radius: 50%;
     margin-bottom: 15px;
 }
+
+/* below for home */
+
+.homeContentContainer {
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(240,210,210,0.8689600840336135) 100%);
+
+    @media (max-width: 767px) {
+        margin-top: 0px !important;
+    }
+}
