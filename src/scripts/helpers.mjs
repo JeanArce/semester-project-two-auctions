@@ -247,3 +247,27 @@ export const togglePassword = () => {
   });
 
 };
+
+
+/**
+ * 
+ */
+export const disableSubmitSearch = () => {
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+  });
+};
+
+/**
+ * 
+ * @param {*} htmlValue 
+ */
+export const generateTooltip = (htmlValue) => {
+  const toolTipbid = document.getElementById('toolTipbid');
+  const tooltip = new bootstrap.Tooltip(toolTipbid, {
+    title: htmlValue,
+    trigger: 'click',
+    html: true,
+  });
+};

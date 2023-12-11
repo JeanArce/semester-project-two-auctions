@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="A profile page is a user's personal space on a website, providing tools and information to manage their account, showcase their activity, and engage with the platform's community or features.">
-    <title>Auctions page</title>
+    <title>Profile page</title>
     <link rel="stylesheet" href="./dist/css/index.css">
     <script type="text/javascript" src="./node_modules/dompurify/dist/purify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>                 
     <script src="./src/scripts/general.js" type="module"></script>
-    <script src="./src/scripts/auctions.js" type="module"></script>
+    <script src="./src/scripts/listing.js" type="module"></script>
 </head>
 <body>
     <header class="common-background">
@@ -37,13 +37,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="auctions.html">Auctions</a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profile</a>
+                        </li> -->
                     </ul>
-                    <form class="d-flex relative-position" id="searchForm">
-                        <input class="form-control black-border background-common padding-right-45" id="searchInput" type="search" placeholder="Search Tag" aria-label="Search">
-                        <button class="btn btn-outline-success search-icon-btn d-flex align-items-center justify-content-center" type="submit">
-                            <img src="images/search.png" alt="Execute Search" width="25" height="25">
-                        </button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -55,14 +52,7 @@
         <div class="container py-4">
             <div class="row">
 
-                <div class="col-12 mb-3">
-                    <h2>Listings</h2>
-                </div>
-
                 <div class="col-12 px-0" id="auctionListings">
-
-                  
-                
                 </div>
 
             </div>

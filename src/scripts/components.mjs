@@ -128,7 +128,7 @@ export const listItemContentComponent = (
                               seller.name
                             }">${seller.name}</a>
                             <h3>
-                                ${DOMPurify.sanitize(title)},
+                                ${DOMPurify.sanitize(title)}
                             </h3>
                             <p>${DOMPurify.sanitize(
                               description,

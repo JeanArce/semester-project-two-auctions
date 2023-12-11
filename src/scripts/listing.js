@@ -1,5 +1,4 @@
 import {
-  getPublicListings,
   getListingById,
   doCreateBid,
   deleteListing,
@@ -14,16 +13,23 @@ import {
   generateModal,
   formatDateToYearMonthDay,
   createInput,
-  disableSubmitSearch,
+  redirectToLoginIfNotAuthenticated,
 } from './helpers.mjs';
 
-const getPublicListingsData = async (tag = null) => {
-  let listingData;
-  if (tag) {
-    listingData = await getPublicListings(tag);
-  } else {
-    listingData = await getPublicListings();
-  }
+// redirect to login if not authenticated
+redirectToLoginIfNotAuthenticated();
+
+const queryString = document.location.search;
+const urlParams = new URLSearchParams(queryString);
+const listingId = urlParams.get('id');
+
+const getPublicListingsData = async () => {
+  let listingData = [];
+
+  const singleData = await getListingById(listingId);
+  listingData[0] = singleData;
+
+  console.log(listingData);
 
   const listing = listingData.map((el) => {
     el.created = formatDateToReadable(el.created);
@@ -90,29 +96,6 @@ createBiddingForm.addEventListener('submit', async (evt) => {
   }
 });
 
-// below for search
-let globalSearchValue = null;
-const searchInput = document.getElementById('searchInput');
-
-const typingDelay = 500;
-let typingTimer;
-
-const onTypingFinished = () => {
-  const searchValue = searchInput.value.trim();
-  if (searchValue == '') {
-    globalSearchValue = null;
-    getPublicListingsData();
-  } else {
-    globalSearchValue = searchValue;
-    getPublicListingsData(searchValue);
-  }
-};
-
-searchInput.addEventListener('input', () => {
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(onTypingFinished, typingDelay);
-});
-
 // below for delete listing
 document.addEventListener('click', async (evt) => {
   if (evt.target.classList.contains('deleteListing')) {
@@ -123,11 +106,7 @@ document.addEventListener('click', async (evt) => {
       try {
         const deleteList = await deleteListing(id);
         if (deleteList) {
-          if (globalSearchValue) {
-            getPublicListingsData(globalSearchValue);
-          } else {
-            getPublicListingsData();
-          }
+          getPublicListingsData();
           showSuccess('Successfully deleted.');
         } else {
           showError('Something went wrong deleting the list item');
@@ -287,17 +266,9 @@ updateListingForm.addEventListener('submit', async (evt) => {
       showError(errorMessage);
     } else {
       showSuccess('Successfully updated entry');
-
-      if (globalSearchValue) {
-        getPublicListingsData(globalSearchValue);
-      } else {
-        getPublicListingsData();
-      }
+      getPublicListingsData();
     }
   } catch (err) {
     console.log(err);
   }
 });
-
-// disable submit search
-disableSubmitSearch();

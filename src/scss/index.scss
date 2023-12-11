@@ -5,6 +5,11 @@ h1 {
     font-size: 28px;
 }
 
+.bids-won {
+    color: $green !important;
+    font-size: 20px;
+}
+
 .common-background {
     background-color: #ffece5;
 }
@@ -206,3 +211,10 @@ footer {
         margin-top: 0px !important;
     }
 }
+
+/* hide ends at in updateListingForm */
+
+#updateListingForm div:nth-child(7) {
+    display: none;
+}
+

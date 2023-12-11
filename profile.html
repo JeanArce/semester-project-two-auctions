@@ -49,11 +49,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="auctions.html">Auctions</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="profile.html">Profile</a>
-                        </li> -->
                     </ul>
-                    <form class="d-flex relative-position">
+                    <form class="d-flex relative-position" id="searchForm">
                         <input class="form-control black-border background-common padding-right-45" id="searchInput" type="search" placeholder="Search Tag" aria-label="Search">
                         <button class="btn btn-outline-success search-icon-btn d-flex align-items-center justify-content-center" type="submit">
                             <img src="images/search.png" alt="Execute Search" width="25" height="25">
@@ -75,8 +72,10 @@
                         <h3 class="m-1 profile-value">Gabriel</h3>
                         <p class="m-1"><strong>Email: </strong> <span class="email-value">Gabriel@noroff.no</span></p>
                         <p class="m-1"><strong>Credits: </strong> <span class="credit-score">10000</span></p>
-                        <p class="m-0"><strong>Bids Won: </strong> <span class="bids-won"></span></p>
-                        
+                        <p class="m-0">
+                            <strong>Bids Won: </strong> 
+                            <a id="toolTipbid" class="bids-won" href="#" onclick="return false;">0</a> 
+                        </p>
                         <button type="button" class="btn btn-primary my-3 black-border" id="createListingOpenBtn">Create Listing</button>
                     </div>
                 </div>

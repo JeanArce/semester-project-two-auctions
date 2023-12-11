@@ -16,9 +16,12 @@ import {
   generateModal,
   formatDateToReadable,
   formatDateToYearMonthDay,
+  disableSubmitSearch,
+  generateTooltip,
 } from './helpers.mjs';
 import { listItemContentComponent } from './components.mjs';
 
+// redirect if not authenticated
 redirectToLoginIfNotAuthenticated();
 
 const queryString = document.location.search;
@@ -27,8 +30,6 @@ const profileName = urlParams.get('profileName');
 
 const getProfileData = async () => {
   const profileData = await getProfileDetails(profileName);
-
-  console.log(profileData);
 
   const profileImage = document.getElementById('profileImage');
   const profile = document.querySelector('.profile-value');
@@ -41,6 +42,22 @@ const getProfileData = async () => {
   credits.innerHTML = profileData.credits;
   bidsWon.innerHTML = profileData.wins.length;
   profileImage.src = profileData.avatar;
+
+  // below for wins data
+  const winsData = await Promise.all(
+    profileData.wins.map(async (el) => {
+      const data = await getListingById(el);
+      return data;
+    }),
+  );
+
+  let winsHtml = ``;
+  winsData.map((el) => {
+    const link = `<a class="text-info" href="listing.html?id=${el.id}">${el.title}</a>&nbsp;&nbsp;`;
+    winsHtml += link;
+  });
+
+  generateTooltip(winsHtml);
 };
 
 getProfileData();
@@ -403,3 +420,6 @@ searchInput.addEventListener('input', () => {
   clearTimeout(typingTimer);
   typingTimer = setTimeout(onTypingFinished, typingDelay);
 });
+
+// disable form submission below
+disableSubmitSearch();

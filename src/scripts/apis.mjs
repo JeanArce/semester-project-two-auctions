@@ -158,7 +158,8 @@ export const updateListing = async(data, id) => {
  * @returns 
  */
 export const getListingById = async(id) => {
-  const getListingIdByEndpoint = baseUrl + `/auction/listings/${id}`;
+  const getListingIdByEndpoint =
+    baseUrl + `/auction/listings/${id}?_seller=true&_bids=true`;
 
   const getListing = await fetch(getListingIdByEndpoint, {
     method: 'GET',
@@ -215,3 +216,23 @@ export const getPublicListings = async(tag=null) => {
   const listingsData = await getListings.json();
   return listingsData;
 }
+
+/**
+ * 
+ * @param {*} profileName 
+ */
+export const getProfileBids = async(profileName) => {
+
+  const profileBidsEndpoint =
+    baseUrl + `/auction/profiles/${profileName}/bids?_listing=true`;
+  const getProfileBids = await fetch(profileBidsEndpoint, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${storedUser.accessToken}`,
+    },
+  });
+
+  const getProfileBidsData = await getProfileBids.json();
+
+  return getProfileBidsData;
+};
