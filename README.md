@@ -7,8 +7,22 @@
 - ## Features
 
   - User authentication
-  - Bidding functionality
+  - create a profile
+    - register
+    - log in/ log out
   - Item listing and management
+    - profile listing
+      - create a listing
+      - can edit, update and delete
+        - title, description, tags and avatar
+    - auction listing for general
+      - all listing created displays
+  - Bidding functionality
+    - create a bid
+    - bids won
+      - displays a winning item
+    - credit earned if you won a bidding
+    - bids count
 
 - ## Installation
 
@@ -34,15 +48,21 @@
 
 - ## Usage
 
-      ( Explanation)  How to use or purpose of this website.
+      This website allows all registered users to do a bidding on certain items. The bidders need to register in order to participate in bidding and earn a 1000 credit every time they register which can be used for bidding. Non-registered users can also access the website and view the item's listing but cannot participate in the bidding.
 
   1. Log in or register your account.
-  2. Browse available items and start bidding.
+  2. Browse available items on listing
+  3. Can participate the bidding(registered)
 
-- ## Contributing
-  If you like to contribute to htis project, follow these guidelines:
-  1. Fork the repository.
-  2. Create a new branch: `git checkout -b feature-name`.
-  3. Make your changes and commit them: `git commit -m 'Add feature'`.
-  4. Push to the branch: `git push origin feature-name`.
-  5. Submit a pull request.
+     on terminal or command line
+
+  4. git status
+  5. git add .
+  6. git commit -m "comment"
+
+  - wait for the eslint & prettier to complete or failed
+
+  4. git push
+
+- ## Deployment
+  Using GitHub action
