@@ -68,7 +68,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="profileDetailsContainer d-flex align-items-center justify-content-center flex-column py-3">
-                        <img class="m-2" src="images/empty-profile.png" id="profileImage" alt="Profile Image">
+                        <div class="profileImageContainer d-flex align-items-center justify-content-center">
+                            <img class="m-2" src="images/empty-profile.png" id="profileImage" alt="Profile Image">
+                            <img src="images/pencil.png" id="editPencil" alt="Edit avatar">
+                        </div>
                         <h3 class="m-1 profile-value">Gabriel</h3>
                         <p class="m-1"><strong>Email: </strong> <span class="email-value">Gabriel@noroff.no</span></p>
                         <p class="m-1"><strong>Credits: </strong> <span class="credit-score">10000</span></p>
@@ -244,6 +247,28 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="updateMediaModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Update Profile Image</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateMediaForm">
+                        <div class="mb-3">
+                            <label for="media" class="form-label">Media</label>
+                            <input type="text" class="form-control" name="media" required id="media">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary black-border d-block mx-auto">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>

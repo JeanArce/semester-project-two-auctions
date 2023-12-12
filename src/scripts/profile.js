@@ -6,6 +6,7 @@ import {
   getListingById,
   updateListing,
   doCreateBid,
+  updateProfileMedia,
 } from './apis.mjs';
 import {
   redirectToLoginIfNotAuthenticated,
@@ -423,3 +424,37 @@ searchInput.addEventListener('input', () => {
 
 // disable form submission below
 disableSubmitSearch();
+
+// below for edit
+const updateMediaForm = document.getElementById('updateMediaForm');
+const editPencil = document.getElementById('editPencil');
+let updateMediaModal;
+
+editPencil.addEventListener('click', () => {
+  updateMediaModal = generateModal('updateMediaModal');
+  updateMediaModal.show();
+});
+
+updateMediaForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(evt.target);
+  const media = formData.get('media');
+
+  const data = {
+    avatar: media,
+  };
+
+  try {
+    const updateMedia = await updateProfileMedia(data, profileName);
+    updateMediaModal.hide();
+    if (updateMedia.errors) {
+      const errorMessage = getErrorMessage(updateMedia);
+      showError(errorMessage);
+    } else {
+      showSuccess('Successfully updated media');
+      getProfileData();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});

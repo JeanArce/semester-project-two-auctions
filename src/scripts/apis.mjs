@@ -236,3 +236,27 @@ export const getProfileBids = async(profileName) => {
 
   return getProfileBidsData;
 };
+
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} profileName 
+ * @returns 
+ */
+export const updateProfileMedia = async(data, profileName) => {
+  
+  const updateProfileMediaEndpoint = baseUrl + `/auction/profiles/${profileName}/media`;
+  const updateMedia = await fetch(updateProfileMediaEndpoint, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json; charset=UTF-8',
+      Authorization: `Bearer ${storedUser.accessToken}`,
+    },
+  });
+
+  const updateMediaData = await updateMedia.json();
+  return updateMediaData;
+
+};

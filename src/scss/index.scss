@@ -192,6 +192,21 @@ footer {
 
 /* below for profile image */
 
+.profileImageContainer {
+    width: 100px;
+    height: 100px;
+    position: relative;
+
+    #editPencil {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
+}
+
 #profileImage {
     width: 80px;
     height: 80px;
