@@ -139,12 +139,23 @@ export const listItemContentComponent = (
                                 <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
                                 <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
                                 <p><strong>Highest bid:</strong> <span>${highestBidAmount(
-                                  bids
+                                  bids,
                                 )}</span></p>
 
+                                <h5>Bids: </h5>
+                                <hr />
+                                <div class="biddersContainer d-flex flex-wrap">
+    `;
+
+                                bids.map((obj) => {
+                                  const bidItemHtml = `<p><strong>${obj.bidderName}</strong><span>${obj.amount}</span></p>`;
+                                  dataHtml += bidItemHtml;
+                                });
+    dataHtml += `                              
+                                </div>
                             </div>
 
-                            <div class="btn-group mb-3" role="group" aria-label="Bids count group">
+                            <div class="btn-group mb-3 mt-2" role="group" aria-label="Bids count group">
                                 <button type="button" class="btn btn-warning">Bid's Count</button>
                                 <button type="button" class="btn btn-info">${
                                   _count.bids
@@ -175,7 +186,7 @@ export const listItemContentComponent = (
 
 
                 </div>
-            `;
+      `;
     } else {
       dataHtml = `
                 <div class="row rowListItemContainer mb-5">
@@ -198,11 +209,22 @@ export const listItemContentComponent = (
                                 <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
                                 <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
                                 <p><strong>Highest bid:</strong> <span>${highestBidAmount(
-                                  bids
+                                  bids,
                                 )}</span></p>
+
+                                <h5>Bids: </h5>
+                                <hr />
+                                <div class="biddersContainer d-flex flex-wrap">
+     `;
+                                bids.map((obj) => {
+                                  const bidItemHtml = `<p><strong>${obj.bidderName}</strong><span>${obj.amount}</span></p>`;
+                                  dataHtml += bidItemHtml;
+                                });
+      dataHtml += `
+                                </div>
                             </div>
 
-                            <div class="btn-group mb-3" role="group" aria-label="Bids count group">
+                            <div class="btn-group mb-3 mt-2" role="group" aria-label="Bids count group">
                                 <button type="button" class="btn btn-warning">Bid's Count</button>
                                 <button type="button" class="btn btn-info">${
                                   _count.bids
@@ -219,7 +241,7 @@ export const listItemContentComponent = (
                     </div>
             
                 </div>
-            `;
+      `;
     }
   } else {
     dataHtml = `
@@ -237,11 +259,23 @@ export const listItemContentComponent = (
                         <p class="mb-1"><strong>Updated:</strong> <span>${updated}</span></p>
                         <p class="mb-1"><strong>Ends at:</strong> <span>${endsAt}</span></p>
                         <p><strong>Highest bid:</strong> <span>${highestBidAmount(
-                          bids
+                          bids,
                         )}</span></p>
+
+                        <h5>Bids: </h5>
+                        <hr />
+                        <div class="biddersContainer d-flex flex-wrap">
+  `;            
+                        bids.map((obj) => {
+                          const bidItemHtml = `<p><strong>${obj.bidderName}</strong><span>${obj.amount}</span></p>`;
+                          dataHtml += bidItemHtml;
+                        });
+  dataHtml += `
+                        </div>
+
                     </div>
 
-                    <div class="btn-group mb-3" role="group" aria-label="Bids count group">
+                    <div class="btn-group mb-3 mt-2" role="group" aria-label="Bids count group">
                         <button type="button" class="btn btn-warning">Bid's Count</button>
                         <button type="button" class="btn btn-info">${
                           _count.bids

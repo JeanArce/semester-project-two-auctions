@@ -233,3 +233,17 @@ footer {
     display: none;
 }
 
+/* below for list bids container */
+
+.biddersContainer {
+    p {
+        font-size: 13px;
+        margin-right: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        background-color: #0dcaf0a8;
+        margin-bottom: 4px;
+    }
+}
+
