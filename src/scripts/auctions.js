@@ -36,10 +36,14 @@ const getPublicListingsData = async (tag = null) => {
   const auctionListingsContainer = document.getElementById('auctionListings');
   auctionListingsContainer.innerHTML = '';
 
-  listing.map((el, index) => {
-    const listItem = listItemContentComponent(el, index);
-    auctionListingsContainer.innerHTML += listItem;
-  }); // end map listings
+  if (listing.length > 0) {
+    listing.map((el, index) => {
+      const listItem = listItemContentComponent(el, index);
+      auctionListingsContainer.innerHTML += listItem;
+    }); // end map listings
+  } else {
+    auctionListingsContainer.innerHTML = `<p class="text-center">No listing found.</p>`;
+  }
 };
 
 getPublicListingsData();
@@ -82,8 +86,11 @@ createBiddingForm.addEventListener('submit', async (evt) => {
       const errorMessage = getErrorMessage(createBid);
       showError(errorMessage);
     } else {
-      showSuccess('Bidding Successful');
-      getPublicListingsData();
+      if (globalSearchValue) {
+        getPublicListingsData(globalSearchValue);
+      } else {
+        getPublicListingsData();
+      }
     }
   } catch (err) {
     console.log(err);
