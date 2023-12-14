@@ -38,13 +38,15 @@
   3. code . to VSC
      to open folder with visual studio code
 
-  - ## on terminal or command line
+  - ## RUN- on terminal or command line
 
   4. Install Dependencies:
      npm install
 
   5. Run the application:
-     npm start
+     npm run build - executing a script in package.json file
+     npm run watch - run the watch
+     npm run start - run the node.js in the project
 
 - ## Usage
 
@@ -54,7 +56,7 @@
   2. Browse available items on listing
   3. Can participate the bidding(registered)
 
-     on terminal or command line
+     to commit on terminal or command line
 
   4. git status
   5. git add .
@@ -62,7 +64,8 @@
 
   - wait for the eslint & prettier to complete or failed
 
-  4. git push
+  4. git push - to push the changes made in a local repository to a remote repository.
 
 - ## Deployment
   Using GitHub action
+  On merge or on push in main branch will trigger to deploy to github pages
